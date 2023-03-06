@@ -1,14 +1,12 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
-
 
 public class PracticeFormWithPageObjectsTests  extends TestBase{
 
     @Test
     void fillPracticeForm() {
+        // Входные данные
         String currentFirstName = "Ted";
         String currentLastName = "Lasso";
         String currentEmail = "ted_lasso@example.com";
@@ -22,6 +20,7 @@ public class PracticeFormWithPageObjectsTests  extends TestBase{
         String currentState = "Uttar Pradesh";
         String currentCity = "Merrut";
 
+        // Заполняем форму.
         registrationPage.openPage()
                             .setFirstName(currentFirstName)
                             .setLastName(currentLastName)
@@ -37,7 +36,7 @@ public class PracticeFormWithPageObjectsTests  extends TestBase{
                             .setCity(currentCity)
                         .pressSubmit();
 
-        // Проверка результата
+        // Проверка результата.
         registrationPage.verifyResultsModalAppears()
                         .verifyResult("Student Name"  , "Ted Lasso")
                         .verifyResult("Student Email" , "ted_lasso@example.com")
